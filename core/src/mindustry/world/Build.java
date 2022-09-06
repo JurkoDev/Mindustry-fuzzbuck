@@ -59,6 +59,7 @@ public class Build{
             tile.build.lastAccessed = unit.getControllerName();
         }
 
+        Events.fire(new BlockConstructEvent(build, true));
         Core.app.post(() -> Events.fire(new BlockBuildBeginEvent(tile, team, unit, true)));
     }
 
@@ -115,6 +116,7 @@ public class Build{
 
         result.placeBegan(tile, previous);
 
+        Events.fire(new BlockConstructEvent(build, false));
         Core.app.post(() -> Events.fire(new BlockBuildBeginEvent(tile, team, unit, false)));
     }
 

@@ -9,6 +9,7 @@ import mindustry.net.*;
 import mindustry.net.Packets.*;
 import mindustry.type.*;
 import mindustry.world.*;
+import mindustry.world.blocks.ConstructBlock;
 import mindustry.world.blocks.storage.CoreBlock.*;
 
 public class EventType{
@@ -378,6 +379,21 @@ public class EventType{
 
         public ResearchEvent(UnlockableContent content){
             this.content = content;
+        }
+    }
+
+
+    /**
+     * Called when block building begins by placing down the ConstructBlock.
+     * Always will be a ConstructBlock.
+     */
+    public static class BlockConstructEvent{
+        public final ConstructBlock.ConstructBuild build;
+        public final boolean breaking;
+
+        public BlockConstructEvent(ConstructBlock.ConstructBuild build, boolean breaking) {
+            this.build = build;
+            this.breaking = breaking;
         }
     }
 
